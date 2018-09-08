@@ -21,7 +21,6 @@ namespace ErrorHandle.Controllers
             return View();
         }
 
-
         public ActionResult MakeExceptionInAjax()
         {
             return View();

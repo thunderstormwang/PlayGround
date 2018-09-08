@@ -28,6 +28,5 @@ namespace ErrorHandle.Filter
                 base.OnException(filterContext);
             }
         }
-
     }
 }

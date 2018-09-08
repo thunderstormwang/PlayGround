@@ -9,8 +9,14 @@
         $(function () {
         });
 
-        // 向第三方查詢存款單
-        function queryDepositOrderFromTP() {
+        // 註冊全域的 ajax 錯誤處理方式
+        $(document).ajaxError(function (e, jqxhr, settings, exception) {
+            e.stopPropagation();
+            if (jqxhr != null)
+                alert('global:' + jqxhr.responseText);
+        });
+
+        function makeExceptionInAjax() {
 
             $.post(
                 '@Url.Action("MakeExceptionInAjax", "Test")',
@@ -21,13 +27,11 @@
                 function (response) {
                     if (response.Status) {
                         alert('查詢成功');
-                        $('#queryResponseFromTP').val(response.Data);
                     }
                     else {
                         alert('查詢失敗, ' + response.ErrorMessage);
                     }
                 }).fail(function (response) {
-                    debugger;
                     alert('response:' + response);
                     alert('response.status:' + response.status);
                     alert('response.responseText:' + response.responseText);
@@ -59,6 +63,6 @@
     <input type="submit" value="送出" />
 }
 
-<input type="button" value="AjaxPost" onclick="queryDepositOrderFromTP()" />
+<input type="button" value="AjaxPost" onclick="makeExceptionInAjax()" />
 
 <div id="queryResult"></div>

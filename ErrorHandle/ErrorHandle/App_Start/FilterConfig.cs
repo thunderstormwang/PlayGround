@@ -1,5 +1,4 @@
 ﻿using ErrorHandle.Filter;
-using System.Web;
 using System.Web.Mvc;
 
 namespace ErrorHandle
@@ -8,8 +7,8 @@ namespace ErrorHandle
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new HandleErrorAttribute());
-            //filters.Add(new HandleErrorExceptionAtttibute());
+            //filters.Add(new HandleErrorAttribute());
+            filters.Add(new HandleErrorExceptionAtttibute());
         }
     }
 }
