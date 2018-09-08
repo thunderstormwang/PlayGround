@@ -1,0 +1,64 @@
+﻿@model RequestBase
+
+@{
+    ViewBag.Title = "MakeExceptionInAjax";
+}
+
+@section scripts {
+    <script type="text/javascript">
+        $(function () {
+        });
+
+        // 向第三方查詢存款單
+        function queryDepositOrderFromTP() {
+
+            $.post(
+                '@Url.Action("MakeExceptionInAjax", "Test")',
+                {
+                    MainAccountID: 'PA00004',
+                    TransactionNumber: '123'
+                },
+                function (response) {
+                    if (response.Status) {
+                        alert('查詢成功');
+                        $('#queryResponseFromTP').val(response.Data);
+                    }
+                    else {
+                        alert('查詢失敗, ' + response.ErrorMessage);
+                    }
+                }).fail(function (response) {
+                    debugger;
+                    alert('response:' + response);
+                    alert('response.status:' + response.status);
+                    alert('response.responseText:' + response.responseText);
+                });
+        }
+    </script>
+}
+
+
+<h2>MakeExceptionInAjax</h2>
+
+@using (Ajax.BeginForm("MakeExceptionInAjaxBeginForm", "Test", new AjaxOptions()
+{
+    UpdateTargetId = "queryResult",
+    HttpMethod = "POST",
+    InsertionMode = InsertionMode.Replace
+}))
+{
+    @Html.LabelFor(m => m.MainAccountID)
+    @Html.TextBoxFor(m => m.MainAccountID)
+    @Html.ValidationMessageFor(m => m.MainAccountID)
+    <br />
+
+    @Html.LabelFor(m => m.TransactionNumber)
+    @Html.TextBoxFor(m => m.TransactionNumber)
+    @Html.ValidationMessageFor(m => m.TransactionNumber)
+    <br />
+
+    <input type="submit" value="送出" />
+}
+
+<input type="button" value="AjaxPost" onclick="queryDepositOrderFromTP()" />
+
+<div id="queryResult"></div>
