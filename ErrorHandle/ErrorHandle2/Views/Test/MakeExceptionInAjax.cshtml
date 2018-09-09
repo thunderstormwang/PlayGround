@@ -9,13 +9,6 @@
         $(function () {
         });
 
-        // 註冊全域的 ajax 錯誤處理方式
-        $(document).ajaxError(function (e, jqxhr, settings, exception) {
-            e.stopPropagation();
-            if (jqxhr != null)
-                alert('global:' + jqxhr.responseText);
-        });
-
         function makeExceptionInAjax() {
 
             $.post(
