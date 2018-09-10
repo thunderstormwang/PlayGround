@@ -150,10 +150,12 @@
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Filter\AjaxFilter.cs" />
     <Compile Include="Filter\HandleErrorExceptionAtttibute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ResponseBase.cs" />
     <Compile Include="Models\RequestBase.cs" />
     <Compile Include="Models\ViewModelError.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

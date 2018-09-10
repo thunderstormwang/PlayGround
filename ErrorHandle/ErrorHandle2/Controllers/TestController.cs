@@ -1,4 +1,5 @@
-﻿using ErrorHandle2.Models;
+﻿using ErrorHandle2.Filter;
+using ErrorHandle2.Models;
 using System;
 using System.Web.Mvc;
 
@@ -24,12 +25,20 @@ namespace ErrorHandle.Controllers
         }
 
         [HttpPost]
+        [AjaxFilter(ReturnPartialView = false)]
         public ActionResult MakeExceptionInAjax(RequestBase request)
         {
             throw new NotImplementedException();
-            return Json(request);
+
+            ResponseBase resonse = new ResponseBase()
+            {
+                Status = true,
+                ErrorMessage = "成功"
+            };
+            return Json(resonse);
         }
 
+        [AjaxFilter(ReturnPartialView = true)]
         [HttpPost]
         public ActionResult MakeExceptionInAjaxBeginForm(RequestBase request)
         {
