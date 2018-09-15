@@ -1,5 +1,4 @@
-﻿namespace ErrorHandle2.Models
-
+﻿namespace ErrorHandle.Models
 {
     public class ResponseBase
     {

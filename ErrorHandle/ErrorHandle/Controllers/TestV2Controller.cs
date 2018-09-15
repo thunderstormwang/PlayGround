@@ -1,18 +1,12 @@
-﻿using ErrorHandle2.Filter;
-using ErrorHandle2.Models;
+﻿using ErrorHandle.Filter;
+using ErrorHandle.Models;
 using System;
 using System.Web.Mvc;
 
 namespace ErrorHandle.Controllers
 {
-    public class TestController : Controller
+    public class TestV2Controller : Controller
     {
-        // GET: Test
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         public ActionResult MakeException()
         {
             throw new NotImplementedException();
@@ -28,6 +22,8 @@ namespace ErrorHandle.Controllers
         [AjaxFilter(ReturnPartialView = false)]
         public ActionResult MakeExceptionInAjax(RequestBase request)
         {
+            // 出錯會在畫面 alert 錯誤訊息
+
             throw new NotImplementedException();
 
             ResponseBase resonse = new ResponseBase()
@@ -38,10 +34,12 @@ namespace ErrorHandle.Controllers
             return Json(resonse);
         }
 
-        [AjaxFilter(ReturnPartialView = true)]
         [HttpPost]
+        [AjaxFilter(ReturnPartialView = true)]
         public ActionResult MakeExceptionInAjaxBeginForm(RequestBase request)
         {
+            // 將錯誤用 partial view 傳回給前端
+
             throw new NotImplementedException();
             return PartialView("_MakeExceptionInAjax");
         }

@@ -147,13 +147,19 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TestV2Controller.cs" />
+    <Compile Include="Filter\AjaxFilter.cs" />
+    <Compile Include="Filter\HandleErrorExceptionV2Atttibute.cs" />
     <Compile Include="Models\RequestBase.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Filter\HandleErrorExceptionAtttibute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ResponseBase.cs" />
+    <Compile Include="Models\ViewModels\ViewModelError.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -197,10 +203,13 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Test\Index.cshtml" />
     <Content Include="Views\Test\MakeExceptionInAjax.cshtml" />
     <Content Include="Views\Test\MakeException.cshtml" />
     <Content Include="Views\Test\_MakeExceptionInAjax.cshtml" />
+    <Content Include="Views\Error\_GeneralPartialView.cshtml" />
+    <Content Include="Views\TestV2\_MakeExceptionInAjax.cshtml" />
+    <Content Include="Views\TestV2\MakeExceptionInAjax.cshtml" />
+    <Content Include="Views\TestV2\MakeException.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

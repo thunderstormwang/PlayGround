@@ -12,6 +12,8 @@ namespace ErrorHandle.Filter
 
             if (filterContext.HttpContext.Request.IsAjaxRequest() && filterContext.Exception != null)
             {
+                // 如果是 ajax request, 將錯誤用 json 回傳給前端
+
                 filterContext.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
                 filterContext.Result = new JsonResult
                 {

@@ -9,14 +9,10 @@ namespace ErrorHandle.Controllers
 {
     public class TestController : Controller
     {
-        // GET: Test
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         public ActionResult MakeException()
         {
+            // 出錯會顯示黃底畫面
+
             throw new NotImplementedException();
             return View();
         }
@@ -29,6 +25,8 @@ namespace ErrorHandle.Controllers
         [HttpPost]
         public ActionResult MakeExceptionInAjax(RequestBase request)
         {
+            // 出錯會在畫面 alert 錯誤訊息
+
             throw new NotImplementedException();
             return Json(request);
         }
@@ -36,6 +34,8 @@ namespace ErrorHandle.Controllers
         [HttpPost]
         public ActionResult MakeExceptionInAjaxBeginForm(RequestBase request)
         {
+            // 出錯會在畫面 alert 錯誤訊息
+
             throw new NotImplementedException();
             return PartialView("_MakeExceptionInAjax");
         }

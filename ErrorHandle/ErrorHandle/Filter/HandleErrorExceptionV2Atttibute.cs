@@ -1,11 +1,11 @@
-﻿using ErrorHandle2.Models;
+﻿using ErrorHandle.Models;
 using System.Net;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace ErrorHandle2.Filter
+namespace ErrorHandle.Filter
 {
-    public class HandleErrorExceptionAtttibute : HandleErrorAttribute
+    public class HandleErrorExceptionV2Atttibute : HandleErrorAttribute
     {
         public override void OnException(ExceptionContext filterContext)
         {
@@ -31,6 +31,9 @@ namespace ErrorHandle2.Filter
 
                 if (isReturnPartialView)
                 {
+                    // 如果是 ajax request 且 isReturnPartialView 為 true
+                    // 將錯誤用 partial view 傳回給前端
+
                     RouteData routeData = new RouteData();
                     routeData.Values.Add("controller", "Error");
                     routeData.Values.Add("action", "GeneralPartialView");
@@ -40,6 +43,9 @@ namespace ErrorHandle2.Filter
                 }
                 else
                 {
+                    // 如果是 ajax request 且 isReturnPartialView 為 false
+                    // 將錯誤用 json 回傳給前端
+
                     filterContext.Result = new JsonResult
                     {
                         JsonRequestBehavior = JsonRequestBehavior.AllowGet,

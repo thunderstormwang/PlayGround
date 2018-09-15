@@ -1,5 +1,4 @@
 ﻿namespace ErrorHandle.Models
-
 {
     public class RequestBase
     {

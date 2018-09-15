@@ -10,9 +10,8 @@
         });
 
         function makeExceptionInAjax() {
-
             $.post(
-                '@Url.Action("MakeExceptionInAjax", "Test")',
+                '@Url.Action("MakeExceptionInAjax", "TestV2")',
                 {
                     MainAccountID: 'PA00004',
                     TransactionNumber: '123'
@@ -35,7 +34,7 @@
 
 <h2>MakeExceptionInAjax</h2>
 
-@using (Ajax.BeginForm("MakeExceptionInAjaxBeginForm", "Test", new AjaxOptions()
+@using (Ajax.BeginForm("MakeExceptionInAjaxBeginForm", "TestV2", new AjaxOptions()
 {
     UpdateTargetId = "queryResult",
     HttpMethod = "POST",
