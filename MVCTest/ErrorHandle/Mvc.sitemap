@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mvcSiteMap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0"
+            xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0 MvcSiteMapSchema.xsd">
+
+  <mvcSiteMapNode title="Root" controller="Root" action="Root">
+    <mvcSiteMapNode title="Home" clickable="false">
+      <mvcSiteMapNode title="Index" controller="Home" action="Index" />
+      <mvcSiteMapNode title="About" controller="Home" action="About" />
+      <mvcSiteMapNode title="Contact" controller="Home" action="Contact" />
+    </mvcSiteMapNode>
+    <mvcSiteMapNode title="測試" clickable="false">
+      <mvcSiteMapNode title="製造例外" controller="Test" action="MakeException" />
+      <mvcSiteMapNode title="製造例外(Ajax)" controller="Test" action="MakeExceptionInAjax" />
+    </mvcSiteMapNode>
+    <mvcSiteMapNode title="測試V2" clickable="false">
+      <mvcSiteMapNode title="製造例外" controller="TestV2" action="MakeException" />
+      <mvcSiteMapNode title="製造例外(Ajax)" controller="TestV2" action="MakeExceptionInAjax" />
+    </mvcSiteMapNode>
+  </mvcSiteMapNode>
+</mvcSiteMap>
