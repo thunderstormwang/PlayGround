@@ -1,0 +1,23 @@
+﻿@model RequestBase
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>SubmitByFormPost</h2>
+
+@{ Html.EnableClientValidation(false); }
+@using (Html.BeginForm("SubmitByFormPost", "Validate"))
+{
+    @Html.LabelFor(m => m.MainAccountID)
+    @Html.TextBoxFor(m => m.MainAccountID)
+    @Html.ValidationMessageFor(m => m.MainAccountID)
+    <br />
+
+    @Html.LabelFor(m => m.TransactionNumber)
+    @Html.TextBoxFor(m => m.TransactionNumber)
+    @Html.ValidationMessageFor(m => m.TransactionNumber)
+    <br />
+
+    <input type="submit" value="送出" />
+}

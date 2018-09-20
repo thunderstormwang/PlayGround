@@ -1,8 +1,10 @@
 ﻿@model RequestBase
 
 @{
-    ViewBag.Title = "MakeExceptionInAjax";
+    ViewBag.Title = "SubmitByAjax";
 }
+
+<h2>SubmitByAjax</h2>
 
 @section scripts {
     <script type="text/javascript">
@@ -11,7 +13,7 @@
 
         function makeExceptionInAjax() {
             $.post(
-                '@Url.Action("MakeExceptionInAjax", "TestV2")',
+                '@Url.Action("SubmitByAjax", "Validate")',
                 {
                     MainAccountID: 'PA00004',
                     TransactionNumber: '123'
@@ -21,7 +23,11 @@
                         alert('查詢成功');
                     }
                     else {
-                        alert('查詢失敗, ' + response.ErrorMessage);
+                        var errorStr = '查詢失敗';
+                        $.each(response.Data, function (index, value) {
+                            errorStr += '\n' + value;
+                        });
+                        alert(errorStr);
                     }
                 }).fail(function (response) {
                     alert('response:' + response);
@@ -32,6 +38,7 @@
     </script>
 }
 
+@{ Html.EnableClientValidation(false); }
 @using (Ajax.BeginForm("SubmitByAjaxBeginForm", "Validate", new AjaxOptions()
 {
     UpdateTargetId = "queryResult",

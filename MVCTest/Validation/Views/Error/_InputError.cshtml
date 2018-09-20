@@ -1,0 +1,12 @@
+﻿@model IEnumerable<string>
+
+<h2>You Shall Not Passed</h2>
+
+@if (Model != null && Model.Count() > 0)
+{
+    foreach (var item in Model)
+    {
+        <h2>@item</h2>
+        <br />
+    }
+}

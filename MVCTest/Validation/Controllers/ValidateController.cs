@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using Validation.Filter;
 using Validation.Models;
 
 namespace Validation.Controllers
@@ -10,13 +9,13 @@ namespace Validation.Controllers
     public class ValidateController : Controller
     {
         // GET: Validate
-        public ActionResult Index()
+        public ActionResult SubmitByFormPost()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Index(RequestBase input)
+        public ActionResult SubmitByFormPost(RequestBase input)
         {
             if (!ModelState.IsValid)
             {
@@ -33,6 +32,44 @@ namespace Validation.Controllers
         public ActionResult Result()
         {
             return View();
+        }
+
+        public ActionResult SubmitByAjax()
+        {
+            return View();
+        }
+
+        [Validate]
+        [HttpPost]
+        public ActionResult SubmitByAjaxBeginForm(RequestBase input)
+        {
+            return PartialView("_Result");
+        }
+
+        [HttpPost]
+        public ActionResult SubmitByAjax(RequestBase input)
+        {
+            if (!ModelState.IsValid)
+            {
+                var messages = ModelState.Values
+                    .SelectMany(x => x.Errors)
+                    .Select(x => x.ErrorMessage);
+
+                ResponseBase<IEnumerable<string>> errorResponse = new ResponseBase<IEnumerable<string>>
+                {
+                    Status = false,
+                    ErrorMessage = "You Passed The Validation",
+                    Data = messages
+                };
+                return Json(errorResponse);
+            }
+
+            ResponseBase<string> successResponse = new ResponseBase<string>
+            {
+                Status = true,
+                ErrorMessage = "You Passed The Validation"
+            };
+            return Json(successResponse);
         }
     }
 }
