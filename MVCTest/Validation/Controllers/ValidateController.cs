@@ -39,14 +39,17 @@ namespace Validation.Controllers
             return View();
         }
 
-        [Validate]
         [HttpPost]
+        [Validate]
+        [AjaxFilter(ReturnPartialView = true)]
         public ActionResult SubmitByAjaxBeginForm(RequestBase input)
         {
             return PartialView("_Result");
         }
 
         [HttpPost]
+        [Validate]
+        [AjaxFilter(ReturnPartialView = false)]
         public ActionResult SubmitByAjax(RequestBase input)
         {
             if (!ModelState.IsValid)
@@ -58,7 +61,7 @@ namespace Validation.Controllers
                 ResponseBase<IEnumerable<string>> errorResponse = new ResponseBase<IEnumerable<string>>
                 {
                     Status = false,
-                    ErrorMessage = "You Passed The Validation",
+                    ErrorMessage = "You Shall Not Passe The Validation",
                     Data = messages
                 };
                 return Json(errorResponse);
