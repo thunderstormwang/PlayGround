@@ -10,11 +10,33 @@ namespace InputValidation.Filter
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            // 只處理 ajax request 的 Model 驗證
-            if (!filterContext.HttpContext.Request.IsAjaxRequest() || filterContext.Controller.ViewData.ModelState.IsValid)
+            //var controllerName = filterContext.RouteData.Values["controller"];
+            //var actionName = filterContext.RouteData.Values["action"];
+
+            if (filterContext.Controller.ViewData.ModelState.IsValid)
             {
                 base.OnActionExecuting(filterContext);
+                return;
             }
+
+            #region 非 ajax 的 Model 驗證失敗處理方式
+
+            if (!filterContext.HttpContext.Request.IsAjaxRequest())
+            {
+                // 我從這裡拿不到 model, 但回傳的畫面又可正常顯示, 不知原因....
+                //var m = filterContext.Controller.ViewData.Model;
+
+                filterContext.Result = new ViewResult
+                {
+                    ViewData = filterContext.Controller.ViewData,
+                };
+
+                return;
+            }
+
+            #endregion 非 ajax 的 Model 驗證失敗處理方式
+
+            #region ajax 的 Model 驗證失敗處理方式
 
             bool isReturnPartialView = false;
             foreach (var method in filterContext.Controller.GetType().GetMethods())
@@ -63,6 +85,8 @@ namespace InputValidation.Filter
                     }
                 };
             }
+
+            #endregion ajax 的 Model 驗證失敗處理方式
         }
     }
 }

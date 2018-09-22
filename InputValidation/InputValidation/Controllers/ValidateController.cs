@@ -15,17 +15,9 @@ namespace InputValidation.Controllers
         }
 
         [HttpPost]
+        [InputValidate]
         public ActionResult SubmitByFormPost(RequestBase input)
         {
-            if (!ModelState.IsValid)
-            {
-                var messages = ModelState.Values
-                    .SelectMany(x => x.Errors)
-                    .Select(x => x.ErrorMessage);
-
-                return View(input);
-            }
-
             return RedirectToAction("Result");
         }
 
