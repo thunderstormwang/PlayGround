@@ -1,7 +1,5 @@
 ﻿using InputValidation.Filter;
 using InputValidation.Models;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web.Mvc;
 
 namespace InputValidation.Controllers
@@ -44,21 +42,6 @@ namespace InputValidation.Controllers
         [AjaxFilter(ReturnPartialView = false)]
         public ActionResult SubmitByAjax(RequestBase input)
         {
-            if (!ModelState.IsValid)
-            {
-                var messages = ModelState.Values
-                    .SelectMany(x => x.Errors)
-                    .Select(x => x.ErrorMessage);
-
-                ResponseBase<IEnumerable<string>> errorResponse = new ResponseBase<IEnumerable<string>>
-                {
-                    Status = false,
-                    ErrorMessage = "You Shall Not Passe The Validation",
-                    Data = messages
-                };
-                return Json(errorResponse);
-            }
-
             ResponseBase<string> successResponse = new ResponseBase<string>
             {
                 Status = true,
