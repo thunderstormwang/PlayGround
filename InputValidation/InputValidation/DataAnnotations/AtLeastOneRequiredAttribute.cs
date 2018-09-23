@@ -21,6 +21,7 @@ namespace InputValidation.DataAnnotations
         /// <returns></returns>
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
+            // 可以藉由 ValidationContext 取得 model
             //Person person = validationContext.ObjectInstance as Person;
 
             if (_properties == null || _properties.Length < 1)
