@@ -160,9 +160,9 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\TestV2Controller.cs" />
-    <Compile Include="Filter\AjaxFilter.cs" />
-    <Compile Include="Filter\HandleErrorExceptionAtttibute.cs" />
-    <Compile Include="Filter\HandleErrorExceptionV2Atttibute.cs" />
+    <Compile Include="Filters\AjaxFilterAttribute.cs" />
+    <Compile Include="Filters\HandleErrorExceptionAttribute.cs" />
+    <Compile Include="Filters\HandleErrorExceptionV2Attribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

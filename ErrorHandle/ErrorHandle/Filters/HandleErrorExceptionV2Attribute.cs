@@ -3,9 +3,9 @@ using System.Net;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace ErrorHandle.Filter
+namespace ErrorHandle.Filters
 {
-    public class HandleErrorExceptionV2Atttibute : HandleErrorAttribute
+    public class HandleErrorExceptionV2Attribute : HandleErrorAttribute
     {
         public override void OnException(ExceptionContext filterContext)
         {
@@ -19,10 +19,10 @@ namespace ErrorHandle.Filter
                 {
                     if ((string)filterContext.RouteData.Values["action"] == method.Name)
                     {
-                        object[] CustomAttributes = method.GetCustomAttributes(typeof(AjaxFilter), true);
+                        object[] CustomAttributes = method.GetCustomAttributes(typeof(AjaxFilterAttribute), true);
                         if (CustomAttributes != null && CustomAttributes.Length >= 1)
                         {
-                            AjaxFilter attr = (AjaxFilter)CustomAttributes[0];
+                            AjaxFilterAttribute attr = (AjaxFilterAttribute)CustomAttributes[0];
                             isReturnPartialView = attr.ReturnPartialView;
                             break;
                         }

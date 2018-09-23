@@ -1,4 +1,4 @@
-﻿using ErrorHandle.Filter;
+﻿using ErrorHandle.Filters;
 using ErrorHandle.Models;
 using System;
 using System.Web.Mvc;
@@ -35,7 +35,7 @@ namespace ErrorHandle.Controllers
         }
 
         [HttpPost]
-        [AjaxFilter(ReturnPartialView = true)]
+        [AjaxFilterAttribute(ReturnPartialView = true)]
         public ActionResult MakeExceptionInAjaxBeginForm(RequestBase request)
         {
             // 將錯誤用 partial view 傳回給前端

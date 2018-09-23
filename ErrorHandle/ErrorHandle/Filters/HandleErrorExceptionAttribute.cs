@@ -1,9 +1,9 @@
 ﻿using System.Net;
 using System.Web.Mvc;
 
-namespace ErrorHandle.Filter
+namespace ErrorHandle.Filters
 {
-    public class HandleErrorExceptionAtttibute : HandleErrorAttribute
+    public class HandleErrorExceptionAttribute : HandleErrorAttribute
     {
         public override void OnException(ExceptionContext filterContext)
         {
