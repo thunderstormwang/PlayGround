@@ -1,8 +1,8 @@
 ﻿using System.Web.Mvc;
 
-namespace InputValidation.Filter
+namespace InputValidation.Filters
 { 
-    public class AjaxFilter : FilterAttribute
+    public class AjaxFilterAttribute : FilterAttribute
     {
         /// <summary>
         /// 是否將錯誤用 partial view 的方式傳回前端

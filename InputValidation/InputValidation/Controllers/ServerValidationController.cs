@@ -1,4 +1,4 @@
-﻿using InputValidation.Filter;
+﻿using InputValidation.Filters;
 using InputValidation.Models;
 using System.Web.Mvc;
 
@@ -16,12 +16,7 @@ namespace InputValidation.Controllers
         [InputValidate]
         public ActionResult SubmitByFormPost(RequestBase input)
         {
-            return RedirectToAction("Result");
-        }
-
-        public ActionResult Result()
-        {
-            return View();
+            return View("Result");
         }
 
         public ActionResult SubmitByAjax()

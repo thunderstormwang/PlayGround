@@ -147,14 +147,17 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CustomValidationController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ServerValidationController.cs" />
-    <Compile Include="Filter\AjaxFilter.cs" />
-    <Compile Include="Filter\InputValidateAttribute.cs" />
+    <Compile Include="Filters\AjaxFilterAttribute.cs" />
+    <Compile Include="Filters\InputValidateAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="DataAnnotations\AtLeastOneRequiredAttribute.cs" />
+    <Compile Include="Models\Person.cs" />
     <Compile Include="Models\RequestBase.cs" />
     <Compile Include="Models\ResponseBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -205,6 +208,9 @@
     <Content Include="Views\ServerValidation\SubmitByAjax.cshtml" />
     <Content Include="Views\ServerValidation\SubmitByFormPost.cshtml" />
     <Content Include="Views\ServerValidation\_Result.cshtml" />
+    <Content Include="Views\CustomValidation\Test.cshtml" />
+    <Content Include="Views\CustomValidation\Result.cshtml" />
+    <Content Include="Views\CustomValidation\TestV2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

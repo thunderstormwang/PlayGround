@@ -1,0 +1,67 @@
+﻿@model Person
+
+@{
+    ViewBag.Title = "TestV2";
+}
+
+<h2>TestV2</h2>
+
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            registAtleastOneRequired();
+            resetValidate();
+        });
+
+        function registAtleastOneRequired() {
+            $.validator.unobtrusive.adapters.add(
+                'atleastonerequired', ['myparams'], function (options) {
+                    // 將 HTML attribute 傳給 jQuery validation rules 和 messages
+                    options.rules['atleastonerequired'] = options.params;
+                    options.messages['atleastonerequired'] = options.message;
+                }
+            );
+            // 如果有多個參數, 可以是 ['myparams1', 'myparams2', ...]
+
+            // 向 jQuery validation 註冊自訂驗證
+            $.validator.addMethod('atleastonerequired', function (value, element, params) {
+                var properties = params.myparams.split(',');
+                var values = $.map(properties, function (property, index) {
+                    var val = $('#' + property).val();
+                    return val != '' ? val : null;
+                });
+                return values.length > 0;
+            }, '');
+        }
+
+        function resetValidate() {
+            $('form').removeData('validator');
+            $('form').removeData('unobtrusiveValidation');
+            $.validator.unobtrusive.parse('form');
+        }
+    </script>
+}
+
+<h2>Test</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(false)
+
+    <div>
+        @Html.LabelFor(x => x.Email)
+        @Html.TextBoxFor(x => x.Email)
+    </div>
+
+    <div>
+        @Html.LabelFor(x => x.Fax)
+        @Html.TextBoxFor(x => x.Fax)
+    </div>
+
+    <div>
+        @Html.LabelFor(x => x.Phone)
+        @Html.TextBoxFor(x => x.Phone)
+    </div>
+
+    <input type="submit" value="OK" />
+}
