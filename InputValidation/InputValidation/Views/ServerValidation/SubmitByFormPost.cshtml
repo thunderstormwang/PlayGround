@@ -7,7 +7,7 @@
 <h2>SubmitByFormPost</h2>
 
 @{ Html.EnableClientValidation(false); }
-@using (Html.BeginForm("SubmitByFormPost", "Validate"))
+@using (Html.BeginForm("SubmitByFormPost", "ServerValidation"))
 {
     @Html.LabelFor(m => m.MainAccountID)
     @Html.TextBoxFor(m => m.MainAccountID)

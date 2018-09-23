@@ -149,7 +149,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ValidateController.cs" />
+    <Compile Include="Controllers\ServerValidationController.cs" />
     <Compile Include="Filter\AjaxFilter.cs" />
     <Compile Include="Filter\InputValidateAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -201,10 +201,10 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Error\_InputError.cshtml" />
-    <Content Include="Views\Validate\Result.cshtml" />
-    <Content Include="Views\Validate\SubmitByAjax.cshtml" />
-    <Content Include="Views\Validate\SubmitByFormPost.cshtml" />
-    <Content Include="Views\Validate\_Result.cshtml" />
+    <Content Include="Views\ServerValidation\Result.cshtml" />
+    <Content Include="Views\ServerValidation\SubmitByAjax.cshtml" />
+    <Content Include="Views\ServerValidation\SubmitByFormPost.cshtml" />
+    <Content Include="Views\ServerValidation\_Result.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

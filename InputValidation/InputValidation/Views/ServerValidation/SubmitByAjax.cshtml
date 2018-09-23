@@ -13,7 +13,7 @@
 
         function makeExceptionInAjax() {
             $.post(
-                '@Url.Action("SubmitByAjax", "Validate")',
+                '@Url.Action("SubmitByAjax", "ServerValidation")',
                 {
                     MainAccountID: 'PA00004',
                     TransactionNumber: '123'
@@ -39,7 +39,7 @@
 }
 
 @{ Html.EnableClientValidation(false); }
-@using (Ajax.BeginForm("SubmitByAjaxBeginForm", "Validate", new AjaxOptions()
+@using (Ajax.BeginForm("SubmitByAjaxBeginForm", "ServerValidation", new AjaxOptions()
 {
     UpdateTargetId = "queryResult",
     HttpMethod = "POST",

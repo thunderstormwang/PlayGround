@@ -4,7 +4,7 @@ using System.Web.Mvc;
 
 namespace InputValidation.Controllers
 {
-    public class ValidateController : Controller
+    public class ServerValidationController : Controller
     {
         // GET: Validate
         public ActionResult SubmitByFormPost()
