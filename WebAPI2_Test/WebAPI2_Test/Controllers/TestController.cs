@@ -9,7 +9,7 @@ using WebAPI2_Test.Models;
 
 namespace WebAPI2_Test.Controllers
 {
-    public class TestController : ApiController
+    public class TestResponseController : ApiController
     {
         [HttpGet, HttpPost]
         public HttpResponseMessage ReturnDictByXml()
@@ -20,25 +20,29 @@ namespace WebAPI2_Test.Controllers
                 { "Company", "Gamble" },
             };
 
-            var resp = new HttpResponseMessage(HttpStatusCode.OK);
-            resp.Content = new ObjectContent<Dictionary<string, string>>(data, new XmlMediaTypeFormatter());
+            var httpResponse = new HttpResponseMessage(HttpStatusCode.OK);
+            httpResponse.Content = new ObjectContent<Dictionary<string, string>>(data, new XmlMediaTypeFormatter());
 
-            return resp;
+            return httpResponse;
         }
 
         [HttpGet, HttpPost]
         public HttpResponseMessage ReturnObjectByXml()
         {
-            Output output = new Output
+            BaseResponse<Output> response = new BaseResponse<Output>
             {
-                Name = "HiHi",
-                TransactionNumber = "1234567"
+                Status = true,
+                Data = new Output
+                {
+                    Name = "HiHi",
+                    TransactionNumber = "1234567"
+                }
             };
 
-            var resp = new HttpResponseMessage(HttpStatusCode.OK);
-            resp.Content = new ObjectContent<Output>(output, new XmlMediaTypeFormatter());
+            var httpResponse = new HttpResponseMessage(HttpStatusCode.OK);
+            httpResponse.Content = new ObjectContent<BaseResponse<Output>>(response, new XmlMediaTypeFormatter());
 
-            return resp;
+            return httpResponse;
         }
 
         [HttpGet, HttpPost]
@@ -50,25 +54,29 @@ namespace WebAPI2_Test.Controllers
                 { "Company", "Gamble" },
             };
 
-            var resp = new HttpResponseMessage(HttpStatusCode.OK);
-            resp.Content = new ObjectContent<Dictionary<string, string>>(data, new JsonMediaTypeFormatter());
+            var httpResponse = new HttpResponseMessage(HttpStatusCode.OK);
+            httpResponse.Content = new ObjectContent<Dictionary<string, string>>(data, new JsonMediaTypeFormatter());
 
-            return resp;
+            return httpResponse;
         }
 
         [HttpGet, HttpPost]
         public HttpResponseMessage ReturnObjectByJson()
         {
-            Output output = new Output
+            BaseResponse<Output> response = new BaseResponse<Output>
             {
-                Name = "HiHi",
-                TransactionNumber = "1234567"
+                Status = true,
+                Data = new Output
+                {
+                    Name = "HiHi",
+                    TransactionNumber = "1234567"
+                }
             };
 
-            var resp = new HttpResponseMessage(HttpStatusCode.OK);
-            resp.Content = new ObjectContent<Output>(output, new JsonMediaTypeFormatter());
+            var httpResponse = new HttpResponseMessage(HttpStatusCode.OK);
+            httpResponse.Content = new ObjectContent<BaseResponse<Output>>(response, new JsonMediaTypeFormatter());
 
-            return resp;
+            return httpResponse;
         }
 
         [HttpGet, HttpPost]
@@ -84,15 +92,19 @@ namespace WebAPI2_Test.Controllers
         }
 
         [HttpGet, HttpPost]
-        public Output ReturnObject()
+        public BaseResponse<object> ReturnObject()
         {
-            Output output = new Output
+            BaseResponse<object> response = new BaseResponse<object>
             {
-                Name = "HiHi",
-                TransactionNumber = "1234567"
+                Status = true,
+                Data = new Output
+                {
+                    Name = "HiHi",
+                    TransactionNumber = "1234567"
+                }
             };
 
-            return output;
+            return response;
         }
     }
 }
