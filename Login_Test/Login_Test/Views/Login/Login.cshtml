@@ -1,0 +1,19 @@
+﻿@model LoginRequest
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+@using (Html.BeginForm("Login", "Login"))
+{
+    @Html.TextBoxFor(m => m.Name)
+    @Html.ValidationMessageFor(m => m.Name)
+    <br />
+    @Html.PasswordFor(m => m.PassWord)
+    @Html.ValidationMessageFor(m => m.PassWord)
+    <br />
+
+    <input type="submit"/>
+}
