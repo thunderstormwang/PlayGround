@@ -152,6 +152,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ServerValidationController.cs" />
     <Compile Include="Filters\AjaxFilterAttribute.cs" />
+    <Compile Include="Filters\GetInput.cs" />
     <Compile Include="Filters\InputValidateAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

@@ -13,6 +13,7 @@ namespace InputValidation.Controllers
         }
 
         [HttpPost]
+        [GetInput]
         [InputValidate]
         public ActionResult SubmitByFormPost(RequestBase input)
         {
