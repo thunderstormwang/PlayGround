@@ -10,9 +10,8 @@ namespace WebAPI2_Test.Controllers
 {
     public class ModelBindingController : ApiController
     {
-        [Route("api/ModelBinding/Demo1/{id2}/{id}")]
         [HttpGet]
-        public string Demo1(int id, int id2)
+        public string Demo1(int id)
         {
             return id.ToString();
         }
@@ -28,15 +27,9 @@ namespace WebAPI2_Test.Controllers
         }
 
         [HttpGet, HttpPost]
-        public string Demo3([FromBody]int id)
+        public string Demo3(int id, [FromBody]string companyName)
         {
-            return id.ToString();
-        }
-
-        [HttpPost]
-        public string Demo4([FromBody]BaseRequest request)
-        {
-            return request.TransactionNumber;
+            return String.Format("ID: {0}, Company: {1}", id, companyName);
         }
     }
 }

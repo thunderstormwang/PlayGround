@@ -12,7 +12,7 @@ namespace WebAPI2_Test.Controllers
     public class TestResponseController : ApiController
     {
         [HttpGet, HttpPost]
-        public HttpResponseMessage ReturnDictByXml()
+        public HttpResponseMessage Demo1_ReturnDictByXml()
         {
             var data = new Dictionary<string, string>()
             {
@@ -27,7 +27,7 @@ namespace WebAPI2_Test.Controllers
         }
 
         [HttpGet, HttpPost]
-        public HttpResponseMessage ReturnObjectByXml()
+        public HttpResponseMessage Demo2_ReturnObjectByXml()
         {
             BaseResponse<Output> response = new BaseResponse<Output>
             {
@@ -46,7 +46,7 @@ namespace WebAPI2_Test.Controllers
         }
 
         [HttpGet, HttpPost]
-        public HttpResponseMessage ReturnDictByJson()
+        public HttpResponseMessage Demo3_ReturnDictByJson()
         {
             var data = new Dictionary<string, string>()
             {
@@ -61,7 +61,7 @@ namespace WebAPI2_Test.Controllers
         }
 
         [HttpGet, HttpPost]
-        public HttpResponseMessage ReturnObjectByJson()
+        public HttpResponseMessage Demo4_ReturnObjectByJson()
         {
             BaseResponse<Output> response = new BaseResponse<Output>
             {
@@ -80,7 +80,7 @@ namespace WebAPI2_Test.Controllers
         }
 
         [HttpGet, HttpPost]
-        public Dictionary<string, string> ReturnDict()
+        public Dictionary<string, string> Demo5_ReturnDict()
         {
             var data = new Dictionary<string, string>()
             {
@@ -92,7 +92,7 @@ namespace WebAPI2_Test.Controllers
         }
 
         [HttpGet, HttpPost]
-        public BaseResponse<object> ReturnObject()
+        public BaseResponse<object> Demo6_ReturnObject()
         {
             BaseResponse<object> response = new BaseResponse<object>
             {

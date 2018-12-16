@@ -1,68 +1,474 @@
 {
-	"variables": [],
 	"info": {
+		"_postman_id": "4741fe38-0cb6-4760-a906-78228b410207",
 		"name": "WebAPI2_Test",
-		"_postman_id": "16bedbc5-db6a-ff63-fd96-63752ebc228d",
-		"description": "",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "http://localhost:63792/api/values/get",
-			"request": {
-				"url": "http://localhost:63792/api/values/get",
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"description": ""
-			},
-			"response": []
+			"name": "參數繫結",
+			"item": [
+				{
+					"name": "Demo1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:63792/api/ModelBinding/Demo1?id=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "63792",
+							"path": [
+								"api",
+								"ModelBinding",
+								"Demo1"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Demo2",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:63792/api/ModelBinding/Demo2?id=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "63792",
+							"path": [
+								"api",
+								"ModelBinding",
+								"Demo2"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Demo3",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "=Apple"
+						},
+						"url": {
+							"raw": "http://localhost:63792/api/ModelBinding/Demo3?id=100&companyName=Microsoft",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "63792",
+							"path": [
+								"api",
+								"ModelBinding",
+								"Demo3"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "100"
+								},
+								{
+									"key": "companyName",
+									"value": "Microsoft"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		},
 		{
-			"name": "http://localhost:63792/api/values/get",
-			"request": {
-				"url": "http://localhost:63792/api/values/get",
-				"method": "GET",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "text/json",
-						"description": "",
-						"disabled": true
+			"name": "回傳格式",
+			"item": [
+				{
+					"name": "調整 Header 去產生不同回傳格式",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/json",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "text/xml",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/xml"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:63792/api/values/get",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "63792",
+							"path": [
+								"api",
+								"values",
+								"get"
+							]
+						}
 					},
-					{
-						"key": "Accept",
-						"value": "text/xml",
-						"description": "",
-						"disabled": true
+					"response": []
+				},
+				{
+					"name": "Demo1_ReturnDictByXml",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/json",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "text/xml",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/xml",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:63792/api/TestResponse/Demo1_ReturnDictByXml",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "63792",
+							"path": [
+								"api",
+								"TestResponse",
+								"Demo1_ReturnDictByXml"
+							]
+						}
 					},
-					{
-						"key": "Accept",
-						"value": "application/xml",
-						"description": ""
+					"response": []
+				},
+				{
+					"name": "Demo2_ReturnObjectByXml",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/json",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "text/xml",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/xml",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:63792/api/TestResponse/Demo2_ReturnObjectByXml",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "63792",
+							"path": [
+								"api",
+								"TestResponse",
+								"Demo2_ReturnObjectByXml"
+							]
+						}
 					},
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"description": "",
-						"disabled": true
-					}
-				],
-				"body": {},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "http://localhost:63792/api/test/ReturnObject",
-			"request": {
-				"url": "http://localhost:63792/api/test/ReturnObject",
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"description": ""
-			},
-			"response": []
+					"response": []
+				},
+				{
+					"name": "Demo3_ReturnDictByJson",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/json",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "text/xml",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/xml",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:63792/api/TestResponse/Demo3_ReturnDictByJson",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "63792",
+							"path": [
+								"api",
+								"TestResponse",
+								"Demo3_ReturnDictByJson"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Demo4_ReturnObjectByJson",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/json",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "text/xml",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/xml",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:63792/api/TestResponse/Demo4_ReturnObjectByJson",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "63792",
+							"path": [
+								"api",
+								"TestResponse",
+								"Demo4_ReturnObjectByJson"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Demo5_ReturnDict",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/json",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "text/xml",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/xml",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:63792/api/TestResponse/Demo5_ReturnDict",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "63792",
+							"path": [
+								"api",
+								"TestResponse",
+								"Demo5_ReturnDict"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Demo6_ReturnObject",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "text/json",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "text/xml",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/xml",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:63792/api/TestResponse/Demo6_ReturnObject",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "63792",
+							"path": [
+								"api",
+								"TestResponse",
+								"Demo6_ReturnObject"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
