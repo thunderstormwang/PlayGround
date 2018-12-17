@@ -121,6 +121,194 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Demo4",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:63792/api/ModelBinding/Demo4?Name=Microsoft&TransactionNumber=ABC123",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "63792",
+							"path": [
+								"api",
+								"ModelBinding",
+								"Demo4"
+							],
+							"query": [
+								{
+									"key": "Name",
+									"value": "Microsoft"
+								},
+								{
+									"key": "TransactionNumber",
+									"value": "ABC123"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Demo5",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "Name=Microsoft&TransactionNumber=ABC123"
+						},
+						"url": {
+							"raw": "http://localhost:63792/api/ModelBinding/Demo5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "63792",
+							"path": [
+								"api",
+								"ModelBinding",
+								"Demo5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Demo6",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "Name",
+									"value": "Microsoft",
+									"type": "text"
+								},
+								{
+									"key": "TransactionNumber",
+									"value": "ABC456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:63792/api/ModelBinding/Demo6?Name=111&TransactionNumber=555",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "63792",
+							"path": [
+								"api",
+								"ModelBinding",
+								"Demo6"
+							],
+							"query": [
+								{
+									"key": "Name",
+									"value": "111"
+								},
+								{
+									"key": "TransactionNumber",
+									"value": "555"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Demo7",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "111",
+									"type": "text"
+								},
+								{
+									"key": "Name",
+									"value": "Post555",
+									"type": "text"
+								},
+								{
+									"key": "TransactionNumber",
+									"value": "Post666",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:63792/api/ModelBinding/Demo7?id=111&Name=Get555&TransactionNumber=Get666",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "63792",
+							"path": [
+								"api",
+								"ModelBinding",
+								"Demo7"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "111"
+								},
+								{
+									"key": "Name",
+									"value": "Get555"
+								},
+								{
+									"key": "TransactionNumber",
+									"value": "Get666"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
