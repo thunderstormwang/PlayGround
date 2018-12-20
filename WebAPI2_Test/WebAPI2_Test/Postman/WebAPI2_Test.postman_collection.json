@@ -657,6 +657,141 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Error Handle",
+			"item": [
+				{
+					"name": "Demo1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:63792/api/ErrorHandle/Demo1/19",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "63792",
+							"path": [
+								"api",
+								"ErrorHandle",
+								"Demo1",
+								"19"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Demo2",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:63792/api/ErrorHandle/Demo2/19",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "63792",
+							"path": [
+								"api",
+								"ErrorHandle",
+								"Demo2",
+								"19"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Demo3",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:63792/api/ErrorHandle/Demo3/19",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "63792",
+							"path": [
+								"api",
+								"ErrorHandle",
+								"Demo3",
+								"19"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Demo4",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:63792/api/ErrorHandle/Demo4/19",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "63792",
+							"path": [
+								"api",
+								"ErrorHandle",
+								"Demo4",
+								"19"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Demo5",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:63792/api/ErrorHandle/Demo5/19",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "63792",
+							"path": [
+								"api",
+								"ErrorHandle",
+								"Demo5",
+								"19"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
