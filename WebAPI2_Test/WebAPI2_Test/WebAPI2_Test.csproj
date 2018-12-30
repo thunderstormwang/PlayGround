@@ -188,14 +188,17 @@
     <Compile Include="Controllers\ErrorHandleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ModelBindingController.cs" />
+    <Compile Include="Controllers\ModelValidationController.cs" />
     <Compile Include="Controllers\TestResponseController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Filters\HandleErrorExceptionAttribute.cs" />
+    <Compile Include="Filters\ValidateAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BaseRequest.cs" />
     <Compile Include="Models\BaseResponse.cs" />
+    <Compile Include="Models\InputValidate.cs" />
     <Compile Include="Models\Output.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
