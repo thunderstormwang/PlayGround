@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Web.Http;
+using WebAPI2_Test.Filters;
 
 namespace WebAPI2_Test
 {
@@ -8,6 +9,8 @@ namespace WebAPI2_Test
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
+            // 註冊全域 Filter
+            //config.Filters.Add(new WebApiExceptionFilterAttribute());
 
             // Web API routes
             config.MapHttpAttributeRoutes();
