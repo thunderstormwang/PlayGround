@@ -12,6 +12,20 @@ namespace WebAPI2_Test.Filters
     {
         public override void OnActionExecuting(HttpActionContext actionContext)
         {
+            // 判斷 model 是不是 null
+            if (actionContext.ActionArguments.Any(kv => kv.Value == null))
+            {
+                var errorResponse = new BaseResponse<string>
+                {
+                    Status = false,
+                    ErrorMessage = "Arguments cannot be null",
+                    Data = "Error"
+                };
+
+                actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.OK, errorResponse);
+                return;
+            }
+
             if (actionContext.ModelState.IsValid)
             {
                 return;
@@ -25,7 +39,7 @@ namespace WebAPI2_Test.Filters
             {
                 Status = false,
                 ErrorMessage = errorMessage,
-                Data = "Success"
+                Data = "Error"
             };
 
             actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.OK, response);
