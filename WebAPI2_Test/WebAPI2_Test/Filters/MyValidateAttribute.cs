@@ -8,7 +8,7 @@ using WebAPI2_Test.Models;
 
 namespace WebAPI2_Test.Filters
 {
-    public class ValidateAttribute : ActionFilterAttribute
+    public class MyValidateAttribute : ActionFilterAttribute
     {
         public override void OnActionExecuting(HttpActionContext actionContext)
         {

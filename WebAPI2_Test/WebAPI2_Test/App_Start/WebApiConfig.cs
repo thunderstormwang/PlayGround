@@ -10,7 +10,8 @@ namespace WebAPI2_Test
         {
             // Web API configuration and services
             // 註冊全域 Filter
-            //config.Filters.Add(new WebApiExceptionFilterAttribute());
+            config.Filters.Add(new MyWebApiExceptionHandlerAttribute());
+            config.Filters.Add(new MyLoggingAttribute());
 
             // Web API routes
             config.MapHttpAttributeRoutes();

@@ -64,7 +64,7 @@ namespace WebAPI2_Test.Controllers
             return response;
         }
 
-        [WebApiExceptionFilter]
+        [MyWebApiExceptionHandler]
         [HttpGet]
         public BaseResponse<string> Demo5(int id)
         {

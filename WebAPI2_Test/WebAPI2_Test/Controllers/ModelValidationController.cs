@@ -6,7 +6,7 @@ namespace WebAPI2_Test.Controllers
 {
     public class ModelValidationController : ApiController
     {
-        [Validate]
+        [MyValidate]
         [HttpPost]
         public BaseResponse<string> Demo1(InputValidate input)
         {
