@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetCoreWebAPI_Test", "NetCoreWebAPI_Test\NetCoreWebAPI_Test.csproj", "{58509306-C287-4B02-9C15-BBFB522A03EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetCoreWebAPI_Test", "NetCoreWebAPI_Test\NetCoreWebAPI_Test.csproj", "{58509306-C287-4B02-9C15-BBFB522A03EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Middleware_Test", "Middleware_Test\Middleware_Test.csproj", "{AD752211-96AD-4C1F-A851-8DE583C964CB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{58509306-C287-4B02-9C15-BBFB522A03EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58509306-C287-4B02-9C15-BBFB522A03EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58509306-C287-4B02-9C15-BBFB522A03EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD752211-96AD-4C1F-A851-8DE583C964CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD752211-96AD-4C1F-A851-8DE583C964CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD752211-96AD-4C1F-A851-8DE583C964CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD752211-96AD-4C1F-A851-8DE583C964CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
