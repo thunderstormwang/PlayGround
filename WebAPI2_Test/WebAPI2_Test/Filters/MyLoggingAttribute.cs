@@ -1,5 +1,7 @@
 ﻿using Newtonsoft.Json;
 using NLog;
+using System;
+using System.IO;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
 
@@ -14,7 +16,7 @@ namespace WebAPI2_Test.Filters
             var logObj = new
             {
                 RequestUri = actionContext.ControllerContext.Request.RequestUri.AbsolutePath,
-                RequestBody = actionContext.Request.Content.ReadAsStringAsync().Result,
+                RequestBody = GetRawRequest(actionContext),
                 ModelBindingRequest = actionContext.ActionArguments
             };
 
@@ -26,12 +28,18 @@ namespace WebAPI2_Test.Filters
             var logObj = new
             {
                 RequestUri = actionExecutedContext.Request.RequestUri.AbsoluteUri,
-                RequestBody = actionExecutedContext.Request.Content.ReadAsStringAsync().Result,
+                RequestBody = GetRawRequest(actionExecutedContext.ActionContext),
                 ModelBindingRequest = actionExecutedContext.ActionContext.ActionArguments,
                 ResponseBody = actionExecutedContext.Response != null ? actionExecutedContext.Response.Content.ReadAsStringAsync().Result : string.Empty
             };
 
             _Logger.Info($"End {JsonConvert.SerializeObject(logObj)}");
+        }
+
+        private string GetRawRequest(HttpActionContext actionContext)
+        {
+            actionContext.Request.Content.ReadAsStreamAsync().Result.Seek(0, SeekOrigin.Begin);
+            return actionContext.Request.Content.ReadAsStringAsync().Result;
         }
     }
 }
