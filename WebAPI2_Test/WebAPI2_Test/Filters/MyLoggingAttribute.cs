@@ -13,9 +13,13 @@ namespace WebAPI2_Test.Filters
 
         public override void OnActionExecuting(HttpActionContext actionContext)
         {
+            // todo: remove  "\", "\n", "\t"
+
             var logObj = new
             {
                 RequestUri = actionContext.ControllerContext.Request.RequestUri.AbsolutePath,
+                RouteValue = JsonConvert.SerializeObject(actionContext.RequestContext.RouteData.Values),
+                QueryString = actionContext.ControllerContext.Request.RequestUri.Query,
                 RequestBody = GetRawRequest(actionContext),
                 ModelBindingRequest = actionContext.ActionArguments
             };
@@ -28,6 +32,8 @@ namespace WebAPI2_Test.Filters
             var logObj = new
             {
                 RequestUri = actionExecutedContext.Request.RequestUri.AbsoluteUri,
+                RouteValue = JsonConvert.SerializeObject(actionExecutedContext.ActionContext.RequestContext.RouteData.Values),
+                QueryString = actionExecutedContext.ActionContext.Request.RequestUri.Query,
                 RequestBody = GetRawRequest(actionExecutedContext.ActionContext),
                 ModelBindingRequest = actionExecutedContext.ActionContext.ActionArguments,
                 ResponseBody = actionExecutedContext.Response != null ? actionExecutedContext.Response.Content.ReadAsStringAsync().Result : string.Empty
