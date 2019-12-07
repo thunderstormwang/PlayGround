@@ -53,7 +53,7 @@ namespace Enum_String_Int
         TuesDay = 2,
         WednesDay = 3,
         ThursDay = 4,
-        Firday = 5,
+        Friday = 5,
         SaturDay = 6
     }
 }
