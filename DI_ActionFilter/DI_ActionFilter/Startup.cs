@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DI_ActionFilter.Filters;
 using DI_ActionFilter.Interfaces;
+using DI_ActionFilter.Models;
 using DI_ActionFilter.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,9 +31,11 @@ namespace DI_ActionFilter
         {
             services.AddControllers();
 
+            services.Configure<Member>(Configuration.GetSection("Member"));
             services.AddSingleton<MyServiceFilter>();
             services.AddSingleton<ICacheService, CacheService>();
         }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

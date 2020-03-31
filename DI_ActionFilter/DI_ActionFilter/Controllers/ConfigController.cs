@@ -21,7 +21,8 @@ namespace DI_ActionFilter.Controllers
         {
             Debug.WriteLine($"ID: {Configuration.GetValue<string>("Member:ID")}");
             Debug.WriteLine($"Password: {Configuration.GetValue<string>("Member:Password")}");
-            Debug.WriteLine($"Url: {Configuration.GetValue<string>("Member:Url")}");
+            Debug.WriteLine($"Url0: {Configuration.GetValue<string>("Member:Url:0")}");
+            Debug.WriteLine($"Url1: {Configuration.GetValue<string>("Member:Url:1")}");
             Debug.WriteLine($"Salary: {Configuration.GetValue<string>("Member:Salary")}");
 
             return "Hello World";

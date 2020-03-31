@@ -1,10 +1,12 @@
-﻿namespace DI_ActionFilter.Models
+﻿using System.Collections.Generic;
+
+namespace DI_ActionFilter.Models
 {
     public class Member
     {
-        public string ID { get; set; }
-        public string Passwrod { get; set; }
-        public string Url { get; set; }
+        public string Id { get; set; }
+        public string Password { get; set; }
+        public List<string> Url { get; set; }
         public decimal Salary { get; set; }
     }
 }
