@@ -3,20 +3,18 @@ using Middleware_Test.Models;
 using Newtonsoft.Json;
 using NLog;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
 namespace Middleware_Test.Middleware
 {
-    public class MyExceptionHandlingMiddleware
+    public class ExceptionHandleMiddleware
     {
         private readonly RequestDelegate next;
 
         private static Logger _Logger = LogManager.GetCurrentClassLogger();
 
-        public MyExceptionHandlingMiddleware(RequestDelegate next)
+        public ExceptionHandleMiddleware(RequestDelegate next)
         {
             this.next = next;
         }

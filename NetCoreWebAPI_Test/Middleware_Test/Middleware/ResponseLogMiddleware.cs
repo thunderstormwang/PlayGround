@@ -1,10 +1,9 @@
 ﻿using System.Diagnostics;
 using System.IO;
-using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 
-namespace Test_Middleware.Middlewares
+namespace Middleware_Test.Middleware
 {
     public class ResponseLogMiddleware
     {
