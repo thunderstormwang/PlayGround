@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace NetCoreWebApiPlayGround.Extensions
 {
-    public static class EnumExtensions
+    public static class EnumExtension
     {
         /// <summary>
         /// GetEnumDescription

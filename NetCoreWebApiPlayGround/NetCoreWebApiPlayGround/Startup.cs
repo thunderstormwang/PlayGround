@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using NetCoreWebApiPlayGround.ActionFilters;
+using NetCoreWebApiPlayGround.Extensions;
 
 namespace NetCoreWebApiPlayGround
 {
@@ -45,11 +46,10 @@ namespace NetCoreWebApiPlayGround
             }
 
             app.UseHttpsRedirection();
-
             app.UseRouting();
-
+            app.UseRequestLogMiddleware();
+            app.UseResponseLogMiddleware();
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }
