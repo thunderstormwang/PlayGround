@@ -1,0 +1,6 @@
+@host_Local = https://localhost:5001
+@hostname = {{host_Local}}
+
+###
+
+GET {{hostname}}/api/Test/Echo HTTP/1.1
