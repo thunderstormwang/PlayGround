@@ -1,5 +1,6 @@
 ﻿using System.Threading;
 using Microsoft.AspNetCore.Mvc;
+using NetCoreWebApiPlayGround.Models;
 
 namespace NetCoreWebApiPlayGround.Controllers
 {
@@ -12,6 +13,16 @@ namespace NetCoreWebApiPlayGround.Controllers
         {
             Thread.Sleep(500);
             return "Hello World";
+        }
+
+        [HttpPost("Receive")]
+        public Output Receive(Input input)
+        {
+            return new Output()
+            {
+                Info = $"AccountId: {input.AccountId}, Age: {input.Age}",
+                Area = input.Long * input.Width
+            };
         }
     }
 }
