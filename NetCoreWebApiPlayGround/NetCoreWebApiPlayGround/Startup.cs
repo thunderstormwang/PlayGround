@@ -29,8 +29,9 @@ namespace NetCoreWebApiPlayGround
             services.AddControllers(options =>
             {
                 // 全域的註冊方式
-                options.Filters.Add(new ApiRunTimeAttribute());
-                options.Filters.Add(new UnifiedResultAttribute());
+                options.Filters.Add<ApiRunTimeAttribute>();
+                options.Filters.Add<UnifiedResultAttribute>();
+                options.Filters.Add<GlobalExceptionFilter>();
             });
         }
 

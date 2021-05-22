@@ -24,12 +24,12 @@ namespace NetCoreWebApiPlayGround.Models
             Result = result;
         }
 
-        // public ApiResult(CustomException exception)
-        // {
-        //     Success = false;
-        //     Code = exception.CustomResultCode;
-        //     Message = exception.CustomMessage;
-        //     Result = exception.HasCustomObjet ? exception.CustomObjet : null;
-        // }
+        public ApiResult(CustomException exception)
+        {
+            Success = false;
+            Code = exception.CustomResultCode;
+            Message = exception.CustomMessage;
+            Result = exception.HasCustomObjet ? exception.CustomObjet : null;
+        }
     }
 }

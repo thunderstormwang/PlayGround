@@ -24,5 +24,11 @@ namespace NetCoreWebApiPlayGround.Controllers
                 Area = input.Long * input.Width
             };
         }
+        
+        [HttpPost("Receive2")]
+        public Output Receive2(Input input)
+        {
+            throw new CustomException(ResultCode.OtherException, $"My Custom Error Message.");
+        }
     }
 }
