@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Serilog;
 
 namespace NetCoreWebApiPlayGround
 {
@@ -18,6 +19,22 @@ namespace NetCoreWebApiPlayGround
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseSerilog((hostContext,
+                            loggerConfiguration) =>
+                        {
+                            switch (hostContext.HostingEnvironment.EnvironmentName)
+                            {
+                                case "Development":
+                                    loggerConfiguration.MinimumLevel.Information()
+                                        .WriteTo.LiterateConsole();
+                                    break;
+                                default:
+                                    break;
+                            }
+                        })
+                        .UseStartup<Startup>();
+                });
     }
 }
