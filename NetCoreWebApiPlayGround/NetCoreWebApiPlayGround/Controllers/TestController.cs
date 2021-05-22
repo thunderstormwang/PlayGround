@@ -1,5 +1,6 @@
 ﻿using System.Threading;
 using Microsoft.AspNetCore.Mvc;
+using NetCoreWebApiPlayGround.ActionFilters;
 using NetCoreWebApiPlayGround.Models;
 
 namespace NetCoreWebApiPlayGround.Controllers
@@ -25,10 +26,20 @@ namespace NetCoreWebApiPlayGround.Controllers
             };
         }
         
-        [HttpPost("Receive2")]
-        public Output Receive2(Input input)
+        [HttpPost("ThrowException")]
+        public Output ThrowException(Input input)
         {
             throw new CustomException(ResultCode.OtherException, $"My Custom Error Message.");
+        }
+        
+        [ServiceFilter(typeof(OtpValidationAttribute))]
+        [HttpPost("SimulateOtpValidation")]
+        public Output SimulateOtpValidation(LoginRequest input)
+        {
+            return new Output()
+            {
+                Info = $"AccountId: {input.AccountId}, Password: {input.Password}"
+            };
         }
     }
 }

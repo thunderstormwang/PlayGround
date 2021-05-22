@@ -1,11 +1,12 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 namespace NetCoreWebApiPlayGround.ActionFilters
 {
+    /// <summary>
+    /// 記錄 api 執行時間並回傳
+    /// </summary>
     public class ApiRunTimeAttribute : ActionFilterAttribute
     {
         private readonly ILogger<ApiRunTimeAttribute> _logger;
@@ -20,9 +21,9 @@ namespace NetCoreWebApiPlayGround.ActionFilters
 
         public override void OnActionExecuted(ActionExecutedContext context)
         {
-            string httpMethod = context.HttpContext.Request.Method;
-            string controllerName = context.ActionDescriptor.RouteValues["controller"];
-            string actionName = context.ActionDescriptor.RouteValues["action"];
+            var httpMethod = context.HttpContext.Request.Method;
+            var controllerName = context.ActionDescriptor.RouteValues["controller"];
+            var actionName = context.ActionDescriptor.RouteValues["action"];
 
             _stopWatch.Stop();
             var timeSpan = _stopWatch.Elapsed;

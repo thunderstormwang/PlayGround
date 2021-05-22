@@ -4,7 +4,6 @@ using System.Net.Mime;
 using System.Text.Json;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using NetCoreWebApiPlayGround.Models;
 
@@ -12,13 +11,14 @@ namespace NetCoreWebApiPlayGround.ActionFilters
 {
     public class GlobalExceptionFilter : IExceptionFilter
     {
-        //private readonly ILogger<GlobalExceptionFilter> _logger;
+        private readonly ILogger<GlobalExceptionFilter> _logger;
 
-        //public GlobalExceptionFilter(IServiceProvider serviceProvider) => _logger = serviceProvider.GetRequiredService<ILogger<GlobalExceptionFilter>>();
-
+        public GlobalExceptionFilter(ILogger<GlobalExceptionFilter> logger) => _logger = logger;
+        
         public void OnException(ExceptionContext context)
         {
-            ApiResult apiResult = new ApiResult(ResultCode.OtherException, context.Exception.Message);
+            var apiResult = new ApiResult(ResultCode.OtherException,
+                context.Exception.Message);
             var exceptionType = context.Exception.GetType();
             context.ExceptionHandled = true;
 
@@ -33,21 +33,24 @@ namespace NetCoreWebApiPlayGround.ActionFilters
                 {
                     exMessage = $"({ex.CustomResultCode ?? string.Empty}) {ex.CustomMessage ?? string.Empty}";
                 }
-                //_logger.LogInformation(exMessage);
+
+                _logger.LogInformation(exMessage);
             }
             else if (exceptionType == typeof(UnauthorizedAccessException))
             {
                 status = HttpStatusCode.Unauthorized;
-                //_logger.LogWarning(context.Exception, $"Unauthorized Access Exception Massage: {exMessage}");
+                _logger.LogWarning(context.Exception,
+                    $"Unauthorized Access Exception Massage: {exMessage}");
             }
             else
             {
                 status = HttpStatusCode.InternalServerError;
-                //_logger.LogError(context.Exception, $"Ex massage: {exMessage}, StackTrace: {context.Exception.StackTrace}");
+                _logger.LogError(context.Exception,
+                    $"Ex massage: {exMessage}, StackTrace: {context.Exception.StackTrace}");
             }
 
             var response = context.HttpContext.Response;
-            response.StatusCode = (int)status;
+            response.StatusCode = (int) status;
             response.ContentType = MediaTypeNames.Application.Json;
             response.WriteAsync(JsonSerializer.Serialize(apiResult));
         }

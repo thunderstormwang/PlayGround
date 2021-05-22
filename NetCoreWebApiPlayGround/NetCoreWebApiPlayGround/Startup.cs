@@ -1,39 +1,34 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using NetCoreWebApiPlayGround.ActionFilters;
 using NetCoreWebApiPlayGround.Extensions;
+using NetCoreWebApiPlayGround.Services;
 
 namespace NetCoreWebApiPlayGround
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
-
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers(options =>
-            {
-                // 全域的註冊方式
-                options.Filters.Add<ApiRunTimeAttribute>();
-                options.Filters.Add<UnifiedResultAttribute>();
-                options.Filters.Add<GlobalExceptionFilter>();
-            });
+            services.AddScoped<ICacheService, CacheService>();
+            services.AddScoped<ICalculateService, CalculateService>();
+
+            services.AddScoped<OtpValidationAttribute>();
+            services.AddScoped<MyCacheActionAttribute>();
+            services.AddScoped<MyCacheControllerAttribute>();
+
+            services.AddControllers(options => { options.RegisterGlobalActionFilters(); });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

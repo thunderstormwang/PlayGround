@@ -6,6 +6,9 @@ using NetCoreWebApiPlayGround.Models;
 
 namespace NetCoreWebApiPlayGround.ActionFilters
 {
+    /// <summary>
+    /// 統一回傳值格式
+    /// </summary>
     public class UnifiedResultAttribute : ActionFilterAttribute
     {
         public override void OnResultExecuting(ResultExecutingContext context)
@@ -15,9 +18,10 @@ namespace NetCoreWebApiPlayGround.ActionFilters
                 ApiResult apiResult;
                 if (!context.ModelState.IsValid)
                 {
-                    var error = context.ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage)
-                        .Aggregate((
-                            result,
+                    var error = context.ModelState.Values
+                        .SelectMany(x => x.Errors)
+                        .Select(x => x.ErrorMessage)
+                        .Aggregate((result,
                             next) => $"{result};{next}");
                     apiResult = new ApiResult(ResultCode.ModelInvalid,
                         message: error);

@@ -21,5 +21,11 @@ namespace NetCoreWebApiPlayGround.Models
         /// </summary>
         [Description("-2")]
         ModelInvalid = -2,
+        
+        /// <summary>
+        /// OTP 驗證失敗
+        /// </summary>
+        [Description("-10")]
+        CheckOtpFailed = -888
     }
 }

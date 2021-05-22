@@ -3,4 +3,43 @@
 
 ###
 
+GET {{hostname}}/api/Demo/Echo HTTP/1.1
+
+###
+
 GET {{hostname}}/api/Test/Echo HTTP/1.1
+
+###
+
+POST {{hostname}}/api/Test/Receive HTTP/1.1
+content-type: application/json
+
+{
+  "AccountId": "roodywang",
+  "Age": -30,
+  "Long": 1.1,
+  "Width": 5.5
+}
+
+###
+
+POST {{hostname}}/api/Test/ThrowException HTTP/1.1
+content-type: application/json
+
+{
+  "AccountId": "roodywang",
+  "Age": 30,
+  "Long": 1.1,
+  "Width": 5.5
+}
+
+###
+
+POST {{hostname}}/api/Test/SimulateOtpValidation HTTP/1.1
+content-type: application/json
+
+{
+  "AccountId": "roodywang",
+  "Password": "1111",
+  "OtpCode": "123456"
+}
