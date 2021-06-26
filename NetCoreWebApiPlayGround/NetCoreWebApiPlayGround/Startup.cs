@@ -30,7 +30,8 @@ namespace NetCoreWebApiPlayGround
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddHealthChecks()
-                .AddCheck<EnvironmentCheck>("ENV");
+                .AddCheck<EnvironmentCheck>("ENV")
+                .AddRedis(Configuration["Redis:ConnectionString"]);
 
             services.AddScoped<ICacheService, CacheService>();
             services.AddScoped<ICalculateService, CalculateService>();
@@ -73,10 +74,11 @@ namespace NetCoreWebApiPlayGround
                 status = report.Status.ToString(),
                 data = report.Entries.Select(e => new
                 {
-                    key = e.Key, 
+                    key = e.Key,
                     description = e.Value.Description,
                     data = e.Value.Data,
-                    status = Enum.GetName(typeof(HealthStatus), e.Value.Status)
+                    status = Enum.GetName(typeof(HealthStatus),
+                        e.Value.Status)
                 })
             };
 
