@@ -18,16 +18,5 @@ namespace NetAsyncPlayground.Controllers
         {
             return $"Hello World";
         }
-
-        [HttpGet]
-        public string Get()
-        {
-            Debug.WriteLine($"Thread ID: {Thread.CurrentThread.ManagedThreadId}");
-            var result = new SomeHelper().GetRemoteData().Result;
-            // var result = GetRemoteData().ConfigureAwait(false).GetAwaiter().GetResult();
-            
-            Debug.WriteLine($"Thread ID: {Thread.CurrentThread.ManagedThreadId}");
-            return $"result: {result}";
-        }
     }
 }

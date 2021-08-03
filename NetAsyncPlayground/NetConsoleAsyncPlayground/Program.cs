@@ -7,22 +7,13 @@ namespace NetConsoleAsyncPlayground
 {
     public class Program
     {
-        // public static void Main(string[] args)
-        // {
-        //     Console.WriteLine($"Thread ID: {Thread.CurrentThread.ManagedThreadId}");
-        //     var result = new BlockHelper().GetRemoteData().Result;
-        //     
-        //     Console.WriteLine($"Thread ID: {Thread.CurrentThread.ManagedThreadId}");
-        //     Console.WriteLine($"result: {result}");
-        // }
-        
         public static async Task Main(string[] args)
         // public static void Main(string[] args)
         {
             Console.WriteLine($"Thread ID: {Thread.CurrentThread.ManagedThreadId}");
-            // var result = new SomeHelper().GetRemoteData().Result;
-            // var result = new SomeHelper().GetRemoteData().ConfigureAwait(false).GetAwaiter().GetResult();
-            var result = await new SomeHelper().GetRemoteData();
+            // var result = new MockHelper().GetRemoteData().Result;
+            // var result = new MockHelper().GetRemoteData().ConfigureAwait(false).GetAwaiter().GetResult();
+            var result = await new MockHelper().GetRemoteData();
             
             Console.WriteLine($"Thread ID: {Thread.CurrentThread.ManagedThreadId}");
             Console.WriteLine($"result: {result}");

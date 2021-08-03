@@ -6,24 +6,33 @@ using Utility;
 
 namespace NetAsyncPlayground.Controllers
 {
-    public class SomeConfigureAwaitController : ApiController
+    public class MockConfigureAwaitController : ApiController
     {
         [HttpGet]
-        public async Task<string> AsyncGet()
+        public string TaskResult()
         {
             Console.WriteLine($"Thread ID: {Thread.CurrentThread.ManagedThreadId}");
-            var result = await new SomeConfigureAwaitHelper().GetRemoteData();
+            var result = new SomeConfigureAwaitHelper().GetRemoteData().Result;
             
             Console.WriteLine($"Thread ID: {Thread.CurrentThread.ManagedThreadId}");
             return $"result: {result}";
         }
         
         [HttpGet]
-        public string Get()
+        public string GetResult()
         {
             Console.WriteLine($"Thread ID: {Thread.CurrentThread.ManagedThreadId}");
-            // var result = new SomeConfigureAwaitHelper().GetRemoteData().Result;
             var result = new SomeConfigureAwaitHelper().GetRemoteData().ConfigureAwait(false).GetAwaiter().GetResult();
+            
+            Console.WriteLine($"Thread ID: {Thread.CurrentThread.ManagedThreadId}");
+            return $"result: {result}";
+        }
+
+        [HttpGet]
+        public async Task<string> AsyncAwait()
+        {
+            Console.WriteLine($"Thread ID: {Thread.CurrentThread.ManagedThreadId}");
+            var result = await new SomeConfigureAwaitHelper().GetRemoteData();
             
             Console.WriteLine($"Thread ID: {Thread.CurrentThread.ManagedThreadId}");
             return $"result: {result}";
