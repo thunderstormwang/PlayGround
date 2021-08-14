@@ -8,25 +8,41 @@ namespace NetCoreConsoleAsyncPlayground
     public class Program
     {
         public static async Task Main(string[] args)
-        // public static void Main(string[] args)
         {
+            var result = 0;
+            
+            Console.WriteLine($"Task.Result");
             Console.WriteLine($"Thread ID: {Thread.CurrentThread.ManagedThreadId}");
-            // var result = new MockHelper().GetRemoteData().Result;
-            // var result = new MockHelper().GetRemoteData().ConfigureAwait(false).GetAwaiter().GetResult();
-            var result = await new MockHelper().GetRemoteData();
+            result = new MockHelper().GetRemoteData().Result;
+            
+            Console.WriteLine($"Thread ID: {Thread.CurrentThread.ManagedThreadId}");
+            Console.WriteLine($"result: {result}");
+            Console.WriteLine($"================================");
+            
+            Console.WriteLine($"async/await");
+            Console.WriteLine($"Thread ID: {Thread.CurrentThread.ManagedThreadId}");
+            result = await new MockHelper().GetRemoteData();
             
             Console.WriteLine($"Thread ID: {Thread.CurrentThread.ManagedThreadId}");
             Console.WriteLine($"result: {result}");
             
             Console.WriteLine($"================================");
             
+            Console.WriteLine($"ConfigureAwait(false) Task.Result");
             Console.WriteLine($"Thread ID: {Thread.CurrentThread.ManagedThreadId}");
-            // var result02 = new SomeConfigureAwaitHelper().GetRemoteData().Result;
-            // var result02 = new SomeConfigureAwaitHelper().GetRemoteData().ConfigureAwait(false).GetAwaiter().GetResult();
-            var result02 = await new SomeConfigureAwaitHelper().GetRemoteData();
+            result = new SomeConfigureAwaitHelper().GetRemoteData().Result;
             
             Console.WriteLine($"Thread ID: {Thread.CurrentThread.ManagedThreadId}");
-            Console.WriteLine($"result: {result02}");
+            Console.WriteLine($"result: {result}");
+            
+            Console.WriteLine($"================================");
+            
+            Console.WriteLine($"ConfigureAwait(false) async/await");
+            Console.WriteLine($"Thread ID: {Thread.CurrentThread.ManagedThreadId}");
+            result = await new SomeConfigureAwaitHelper().GetRemoteData().ConfigureAwait(false);
+            
+            Console.WriteLine($"Thread ID: {Thread.CurrentThread.ManagedThreadId}");
+            Console.WriteLine($"result: {result}");
         }
     }
 }

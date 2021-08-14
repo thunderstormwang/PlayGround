@@ -32,7 +32,7 @@ namespace NetAsyncPlayground.Controllers
         public async Task<string> AsyncAwait()
         {
             Console.WriteLine($"Thread ID: {Thread.CurrentThread.ManagedThreadId}");
-            var result = await new SomeConfigureAwaitHelper().GetRemoteData();
+            var result = await new SomeConfigureAwaitHelper().GetRemoteData().ConfigureAwait(false);
             
             Console.WriteLine($"Thread ID: {Thread.CurrentThread.ManagedThreadId}");
             return $"result: {result}";
